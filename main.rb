@@ -79,7 +79,8 @@ def calc_weighted_avg(prices, coins)
   # over the period of time
   total_btc = coins.inject(:+)
   # multiply each price by its btc weight
-  prices.each_with_index.map { |x, i| x * coins[i]/total_btc }.inject(:+).round.to_s
+  weighted_prices = prices.each_with_index.map { |x, i| x * coins[i]/total_btc }
+  weighted_prices.inject(:+).round.to_s
 end
 
 def format_json(open_price, close_price, high_price, low_price, start_time, end_time, average, weighted_average, volume)
