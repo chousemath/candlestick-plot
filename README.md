@@ -1,3 +1,11 @@
+### Dear Sir or Madame
+
+> I intentionally downsized the working data set in order to have a faster work flow, I hope that is okay!
+
+
+
+
+
 # Candlestick Chart
 
 ## Introduction
@@ -42,7 +50,7 @@ $ git push origin master
 
 Given a CSV (comma-separated values) containing historical Bitcoin trades, we want to represent the trades in a [candlestick chart](https://en.wikipedia.org/wiki/Candlestick_chart). In order to do so, the historical data needs to be transformed.
 
-You will need to create a function that takes a CSV file and the desired period (window size) and outputs the result in JSON format. 
+You will need to create a function that takes a CSV file and the desired period (window size) and outputs the result in JSON format.
 
 
 ### Input format
@@ -90,17 +98,17 @@ timestamp,price,size
 1383102509,250000,2.00000000
 1383104598,230000,0.10000000
 ```
- 
+
 
 * The desired period will be in seconds.  Assume that this value will always be greater than or equal to 30 seconds and less than or equal to 86400 seconds (1 day).
 
- 
+
 
 ### Output format
 
 * JSON Array
 
- 
+
 
 The output should be a list containing:
 
@@ -122,7 +130,7 @@ The output should be a list containing:
 
 * volume: `string` Total volume traded during the period (in BTC).
 
- 
+
 
 ## Design considerations
 
@@ -134,7 +142,7 @@ The output should be a list containing:
 
 * A code that works is the main goal.  Optimize only when you have time left.
 
- 
+
 ##### Sample input:
 ```
 1383038122,250000,2.00000000
@@ -189,5 +197,5 @@ The output should be a list containing:
 ```
 
 
- 
+
 
