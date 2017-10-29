@@ -74,6 +74,9 @@ def calc_avg(prices)
 end
 
 def calc_weighted_avg(prices, coins)
+  # I am making the assumption that the weight average is calculated by considering
+  # the btc trade volume for any particular day relative to the total btc trade volume
+  # over the period of time
   total_btc = coins.inject(:+)
   # multiply each price by its btc weight
   prices.each_with_index.map { |x, i| x * coins[i]/total_btc }.inject(:+).round.to_s
