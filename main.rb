@@ -24,7 +24,7 @@ def retrieve_data_window(data_path, period)
                                     start_time,
                                     end_time.to_i,
                                     calc_avg(prices),
-                                    'weighted_average',
+                                    calc_weighted_avg(prices, coins),
                                     btc_volume(coins))
       # need to reset values
       start_time = start_time + period
@@ -42,7 +42,7 @@ def retrieve_data_window(data_path, period)
                                     start_time,
                                     end_time.to_i,
                                     calc_avg(prices),
-                                    'weighted_average',
+                                    calc_weighted_avg(prices, coins),
                                     btc_volume(coins))
       # need to reset values
       start_time = start_time + period
@@ -73,16 +73,13 @@ def calc_avg(prices)
   ((prices.inject(:+).to_f/prices.size).round).to_s
 end
 
+def calc_weighted_avg(prices, coins)
+  total_btc = coins.inject(:+)
+  # multiply each price by its btc weight
+  prices.each_with_index.map { |x, i| x * coins[i]/total_btc }.inject(:+).round.to_s
+end
+
 def format_json(open_price, close_price, high_price, low_price, start_time, end_time, average, weighted_average, volume)
-  # open: string Price (in KRW) at the start of the period.
-# close: string Price (in KRW) at the end of the period.
-# high: string Highest price (in KRW) during the period.
-# low: string Lowest price (in KRW) during the period.
-# start: integer Start time (in UNIX timestamp) of the period.
-# end: integer End time (in UNIX timestamp) of the period.
-# average: string Average price per trade (in KRW) during the period.
-# weighted_average: string Weighted average price (in KRW) during the period.
-# volume: string Total volume traded during the period (in BTC).
   {
     open: open_price,
     close: close_price,
