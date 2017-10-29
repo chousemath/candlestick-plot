@@ -2,10 +2,10 @@ require 'csv'
 require 'json'
 
 def retrieve_data_window(data_path, period)
-  start_time = nil
+  start_time = nil # will be initialized at the start of the loop
   end_time = 0
-  prices = []
-  coins = []
+  prices = [] # contains all the prices over a period
+  coins = [] # contains all btc trade volumes over a period
   formatted_data = []
 
   CSV.foreach(data_path) do |row|
