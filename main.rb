@@ -57,7 +57,7 @@ def retrieve_data_window(data_path, period)
     coins << row[2].to_f
   end
 
-  puts formatted_data.to_json
+  puts "Please check the data folder!"
   File.open('data/data.json', 'w') do |f|
     f.write(JSON.pretty_generate(formatted_data))
   end
