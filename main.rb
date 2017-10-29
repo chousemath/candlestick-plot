@@ -1,36 +1,7 @@
-# Given a CSV (comma-separated values) containing historical Bitcoin trades,
-# we want to represent the trades in a candlestick chart. In order to do so,
-# the historical data needs to be transformed.
-
-# The desired period will be in seconds. Assume that this value will always
-# be greater than or equal to 30 seconds and less than or equal to 86400
-# seconds (1 day)
-
-
-# open: string Price (in KRW) at the start of the period.
-# close: string Price (in KRW) at the end of the period.
-# high: string Highest price (in KRW) during the period.
-# low: string Lowest price (in KRW) during the period.
-# start: integer Start time (in UNIX timestamp) of the period.
-# end: integer End time (in UNIX timestamp) of the period.
-# average: string Average price per trade (in KRW) during the period.
-# weighted_average: string Weighted average price (in KRW) during the period.
-# volume: string Total volume traded during the period (in BTC).
-
 require 'csv'
 require 'json'
 
-# You will need to create a function that takes a CSV file and the desired
-# period (window size) and outputs the result in JSON format.
-#
-# For units of KRW round to the nearest ones digit
-# for units of BTC round to the nearest Satoshi
-
 def retrieve_data_window(data_path, period)
-  # The desired period will be in seconds. Assume that this value will always
-  # be greater than or equal to 30 seconds and less than or equal to 86400
-  # seconds (1 day).
-
   start_time = nil
   end_time = 0
   prices = []
@@ -93,10 +64,12 @@ def retrieve_data_window(data_path, period)
 end
 
 def btc_volume(coins)
+  # for units of BTC round to the nearest Satoshi
   '%.8f' % (((coins.inject(:+)) * 100_000_000).round / 100_000_000.0).to_s
 end
 
 def calc_avg(prices)
+  # For units of KRW round to the nearest ones digit
   ((prices.inject(:+).to_f/prices.size).round).to_s
 end
 
