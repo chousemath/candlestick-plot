@@ -98,4 +98,4 @@ def format_json(open_price, close_price, high_price, low_price, start_time, end_
 end
 
 data_path = 'data/small.csv'
-retrieve_data_window(data_path, 50_000)
+retrieve_data_window(data_path, 80_000)

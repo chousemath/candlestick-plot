@@ -1,26 +1,21 @@
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
+function korbitToGoogle(korbitData) {
+  return [`${korbitData.start} - ${korbitData.end}`, korbitData.low, korbitData.open, korbitData.close, korbitData.high];
+}
+
 function drawChart() {
-
-  $.getJSON("../data/data.json", function(json) {
-      console.log(json[0]);
+  var data;
+  $.getJSON('https://raw.githubusercontent.com/chousemath/candlestick-plot/master/data/data.json', function(json) {
+    data = google.visualization.arrayToDataTable(json.map(korbitToGoogle), true);
+  }).done(function() {
+    var options = {
+      title : 'Korbit Transactions',
+      legend:'none',
+      explorer: {axis: 'horizontal', keepInBounds: true}
+    };
+    var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
   });
-
-  var data = google.visualization.arrayToDataTable([
-    ['Mon', 20, 28, 38, 45],
-    ['Tue', 31, 38, 55, 66],
-    ['Wed', 50, 55, 77, 80],
-    ['Thu', 77, 77, 66, 50],
-    ['Fri', 68, 66, 22, 15]
-    // Treat first row as data as well.
-  ], true);
-
-  var options = {
-    legend:'none'
-  };
-
-  var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
-
-  chart.draw(data, options);
 }
