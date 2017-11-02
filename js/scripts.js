@@ -13,7 +13,8 @@ function drawChart() {
     var options = {
       title : 'Korbit Transactions',
       legend:'none',
-      explorer: {axis: 'horizontal', keepInBounds: true}
+      explorer: {axis: 'horizontal', keepInBounds: true},
+      bar: {groupWidth: '90%'}
     };
     var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
     chart.draw(data, options);
