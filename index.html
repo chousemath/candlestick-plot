@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Korbit Transaction Data</title>
+  <meta name="description" content="Candlestick Plot">
+  <meta name="author" content="Joseph Choi">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Import jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- Import Material icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+<body>
+  <nav class="nav-boundaries blue">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Korbit Transaction Data</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a><i class="material-icons left">access_time</i>Set Interval</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div style="width: 100%; height: 90%; display: flex; justify-content: center; align-content: center;">
+    <div id="chart_div" style="width: 100%; min-width: 300px; height: 100%; min-height: 300px;"></div>
+  </div>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
